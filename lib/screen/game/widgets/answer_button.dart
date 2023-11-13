@@ -1,6 +1,6 @@
 // AnswerButton.dart
 import 'package:flutter/material.dart';
-import 'package:math_app/game/widgets/custom_button.dart';
+import 'package:math_app/screen/game/widgets/custom_button.dart';
 
 class AnswerButton extends StatelessWidget {
   final String title;

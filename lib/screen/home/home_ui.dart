@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:math_app/game/widgets/custom_button.dart';
+import 'package:math_app/screen/game/widgets/custom_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print('hahhaaa');
     return Scaffold(
-      backgroundColor: Color.fromARGB(255,234,239,240),
+      backgroundColor: Color.fromARGB(255, 234, 239, 240),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -37,7 +37,9 @@ class HomeScreen extends StatelessWidget {
             CustomButton(
               width: 200,
               height: 60,
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/leaderboard-page');
+              },
               frontColor: Color.fromARGB(255, 154, 68, 92),
               shadowColor: Color.fromARGB(255, 121, 33, 55),
               child: const Row(

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:math_app/home/home_controller.dart';
+import 'package:math_app/screen/home/home_controller.dart';
 
 class HomeBinding implements Bindings{
  @override

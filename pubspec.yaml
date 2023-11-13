@@ -38,6 +38,9 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^6.1.0
   percent_indicator: ^4.2.3
+  sqflite: ^2.3.0
+  flutter_polygon: ^0.3.0+2
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +73,7 @@ flutter:
     - 'assets/images/home-logo1.png'
     - 'assets/images/logo.png'
     - 'assets/images/logo-1.png'
+    - 'assets/images/avatar.jpg'
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

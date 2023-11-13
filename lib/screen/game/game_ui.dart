@@ -1,9 +1,9 @@
 // GameScreen.dart
 import 'package:flutter/material.dart';
-import 'package:math_app/game/widgets/answer_button.dart';
+import 'package:math_app/screen/game/widgets/answer_button.dart';
 import 'package:get/get.dart';
-import 'package:math_app/game/game_controller.dart';
-import 'package:math_app/game/widgets/progress_bar.dart';
+import 'package:math_app/screen/game/game_controller.dart';
+import 'package:math_app/screen/game/widgets/progress_bar.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/score.dart';
 
@@ -13,7 +13,7 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 234, 239, 240),
+      backgroundColor: const Color.fromARGB(255, 234, 239, 240),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,8 +74,7 @@ class GameScreen extends StatelessWidget {
   }
 
   Widget renderQuestion() {
-    String questionText =
-        Get.find<GameController>().currentQuestion.question;
+    String questionText = Get.find<GameController>().currentQuestion.question;
 
     List<String> questionParts = questionText.split(' ');
     List<Widget> questionWidgets = [];
@@ -139,8 +138,7 @@ class GameScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnswerButton(
-              onPressed: () =>
-                  Get.find<GameController>().isCorrectAnswer(0),
+              onPressed: () => Get.find<GameController>().isCorrectAnswer(0),
               title: Get.find<GameController>()
                   .currentQuestion
                   .answers[0]
@@ -148,8 +146,7 @@ class GameScreen extends StatelessWidget {
             ),
             const SizedBox(width: 20),
             AnswerButton(
-              onPressed: () =>
-                  Get.find<GameController>().isCorrectAnswer(1),
+              onPressed: () => Get.find<GameController>().isCorrectAnswer(1),
               title: Get.find<GameController>()
                   .currentQuestion
                   .answers[1]
@@ -162,8 +159,7 @@ class GameScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnswerButton(
-              onPressed: () =>
-                  Get.find<GameController>().isCorrectAnswer(2),
+              onPressed: () => Get.find<GameController>().isCorrectAnswer(2),
               title: Get.find<GameController>()
                   .currentQuestion
                   .answers[2]
@@ -171,8 +167,7 @@ class GameScreen extends StatelessWidget {
             ),
             const SizedBox(width: 20),
             AnswerButton(
-              onPressed: () =>
-                  Get.find<GameController>().isCorrectAnswer(3),
+              onPressed: () => Get.find<GameController>().isCorrectAnswer(3),
               title: Get.find<GameController>()
                   .currentQuestion
                   .answers[3]

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:math_app/game/game_controller.dart';
-import 'package:math_app/game/widgets/custom_button.dart';
+import 'package:math_app/screen/game/game_controller.dart';
+import 'package:math_app/screen/game/widgets/custom_button.dart';
+import 'package:math_app/screen/result/result_controller.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final gameController = Get.find<GameController>();
+    final resultController = Get.find<ResultController>();
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 234, 239, 240),
       body: Center(
@@ -25,7 +28,7 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     Obx(
                       () {
-                        final score = Get.find<GameController>().scoreRx;
+                        final score = gameController.scoreRx;
                         return Text(
                           '$score',
                           style: const TextStyle(
@@ -36,10 +39,13 @@ class ResultScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    const Text(
-                      'Highest Score: ...',
-                      style: TextStyle(fontSize: 15, color: Colors.white),
-                    ),
+                    Obx(
+                      () => Text(
+                        'Highest Score: ${resultController.highestScore.value} ',
+                        style:
+                            const TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -56,7 +62,10 @@ class ResultScreen extends StatelessWidget {
                     width: 80,
                     frontColor: Color.fromARGB(255, 167, 62, 91),
                     shadowColor: Color.fromARGB(255, 121, 33, 55),
-                    onTap: () => Get.toNamed('/home-page'),
+                    onTap: () => Get.until((route) {
+                      //print('agggggggg${route.settings.name}');
+                      return route.settings.name == '/home-page';
+                    }),
                     child: const Center(
                       child: Icon(
                         Icons.home,
@@ -72,7 +81,8 @@ class ResultScreen extends StatelessWidget {
                     frontColor: Color.fromARGB(255, 218, 85, 104),
                     shadowColor: Color.fromARGB(255, 181, 50, 64),
                     onTap: () {
-                      Get.toNamed('/game-page'); // Chuyển đến màn hình chơi
+                      gameController.resetGame();
+                      Get.back(); // Chuyển đến màn hình chơi
                     },
                     child: const Center(
                       child: Icon(

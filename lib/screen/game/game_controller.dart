@@ -1,9 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'package:get/get.dart';
-
-import '../model/question.dart';
+import '../../model/question.dart';
 
 class GameController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -36,7 +34,7 @@ class GameController extends GetxController
   }
 
   late Question _currentQuestion;
-  RxInt _score = 0.obs;
+  final RxInt _score = 0.obs;
   RxInt get scoreRx => _score;
   int get score => _score.value;
 
@@ -139,14 +137,15 @@ class GameController extends GetxController
     }
   }
 
- void gameOver() {
-  print('Game over');
-  //_animationController.dispose();
-  Get.offAllNamed('/result-page');
-}
-
+  void gameOver(){
+    print('Game over');
+    //await DatabaseHelper.insertPlayer( player);
+    //_animationController.dispose();
+    Get.toNamed('/result-page');
+  }
 
   void resetGame() {
+    _animation.value = 0;
     _score.value = 0;
     generateRandomQuestion();
   }

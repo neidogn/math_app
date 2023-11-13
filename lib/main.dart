@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:math_app/game/game_bindings.dart';
-import 'package:math_app/game/game_ui.dart';
-import 'package:math_app/home/home_bindings.dart';
-import 'package:math_app/home/home_ui.dart';
-import 'package:math_app/result/result_bindings.dart';
-import 'package:math_app/result/result_ui.dart';
+import 'package:math_app/screen/game/game_bindings.dart';
+import 'package:math_app/screen/game/game_ui.dart';
+import 'package:math_app/screen/home/home_bindings.dart';
+import 'package:math_app/screen/home/home_ui.dart';
+import 'package:math_app/screen/leaderboard/leaderboard_ui.dart';
+import 'package:math_app/screen/result/result_bindings.dart';
+import 'package:math_app/screen/result/result_ui.dart';
 
 void main() {
   runApp(const MathApp());
@@ -21,7 +22,8 @@ class MathApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/home-page',
       getPages: [
         GetPage(
           name: '/home-page',
@@ -37,7 +39,11 @@ class MathApp extends StatelessWidget {
           name: '/result-page',
           page: () => const ResultScreen(),
           binding: ResultBinding(),
-        )
+        ),
+        GetPage(
+          name: '/leaderboard-page',
+          page: () => const LeaderboardScreen(),
+        ),
       ],
     );
   }

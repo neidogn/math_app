@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:math_app/game/game_controller.dart';
-import 'package:math_app/game/widgets/custom_button.dart';
+import 'package:math_app/screen/game/game_controller.dart';
+import 'package:math_app/screen/game/widgets/custom_button.dart';
 
 class ScoreWidget extends StatelessWidget {
   const ScoreWidget({
