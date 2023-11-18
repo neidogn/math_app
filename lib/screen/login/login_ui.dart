@@ -4,6 +4,7 @@ import 'package:math_app/screen/login/login_controller.dart';
 import 'package:math_app/screen/login/widgets/text_field.dart';
 
 class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
   final LoginController controller = Get.find<LoginController>();
 
   @override
