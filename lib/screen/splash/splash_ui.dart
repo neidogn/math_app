@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
       var status = prefs.getBool('isLoggedIn') ?? false;
       print(status);
       if (status) {
-        Get.offNamed('home-page');
+        Get.offNamed('/home-page');
       } else {
         Get.offNamed('/login-page');
       }

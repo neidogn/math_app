@@ -35,7 +35,7 @@ class LoginController extends GetxController {
         Get.snackbar('Login Successful', 'Congratulation');
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setBool("isLoggedIn", true);
-        Get.offAllNamed('home-page');
+        Get.offAllNamed('/home-page');
       } else if (status == -1) {
         loading.value = false;
         Get.snackbar('Login Failed', 'Something went wrong');

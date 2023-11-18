@@ -60,14 +60,11 @@ class GameScreen extends StatelessWidget {
       height: 50,
       frontColor: Color.fromARGB(255, 167, 62, 91),
       shadowColor: Color.fromARGB(255, 129, 25, 54),
-      child: Center(
+      child: const Center(
         child: SizedBox(
           height: 23,
           width: 270,
-          child: Container(
-            // margin: EdgeInsets.all(10),
-            child: ProgressBar(),
-          ),
+          child: ProgressBar(),
         ),
       ),
     );

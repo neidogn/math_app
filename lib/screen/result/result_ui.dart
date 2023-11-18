@@ -63,7 +63,7 @@ class ResultScreen extends StatelessWidget {
                     frontColor: Color.fromARGB(255, 167, 62, 91),
                     shadowColor: Color.fromARGB(255, 121, 33, 55),
                     onTap: () => Get.until((route) {
-                      //print('agggggggg${route.settings.name}');
+                      print('agggggggg${route.settings.name}');
                       return route.settings.name == '/home-page';
                     }),
                     child: const Center(
