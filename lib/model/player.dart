@@ -30,6 +30,4 @@ class Player {
       lastUpdate: map['lastUpdate'],
     );
   }
-
-  
 }

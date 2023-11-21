@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:get/get.dart';
+import 'package:math_app/app_router/app_router.dart';
 import '../../model/question.dart';
 
 class GameController extends GetxController
@@ -137,11 +138,9 @@ class GameController extends GetxController
     }
   }
 
-  void gameOver(){
+  void gameOver() {
     print('Game over');
-    //await DatabaseHelper.insertPlayer( player);
-    //_animationController.dispose();
-    Get.toNamed('/result-page');
+    Get.toNamed(AppRoutes.resultRoute);
   }
 
   void resetGame() {

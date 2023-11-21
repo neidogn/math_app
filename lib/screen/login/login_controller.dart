@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
+import 'package:math_app/app_router/app_router.dart';
 import 'package:math_app/screen/login/api_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,7 +36,7 @@ class LoginController extends GetxController {
         Get.snackbar('Login Successful', 'Congratulation');
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setBool("isLoggedIn", true);
-        Get.offAllNamed('/home-page');
+        Get.offAllNamed(AppRoutes.homeRoute);
       } else if (status == -1) {
         loading.value = false;
         Get.snackbar('Login Failed', 'Something went wrong');

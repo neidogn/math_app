@@ -15,9 +15,7 @@ class ResultController extends GetxController {
   void onReady() async {
     highestScore.value = await DatabaseHelper.getHighestScore();
     tenthScore = await DatabaseHelper.getTenthScore();
-
     showDialog();
-
     super.onReady();
   }
 
@@ -28,49 +26,51 @@ class ResultController extends GetxController {
   }
 
   void showDialog() async {
-  if (gameController.scoreRx.value > tenthScore) {
-    await Get.defaultDialog(
-      title: 'Congratulations!',
-      content: Column(
-        children: [
-          const Text('You made it to the top 10!'),
-          TextField(
-            controller: nameController,
-            decoration: const InputDecoration(
-              labelText: 'Enter your name',
+    if (gameController.scoreRx.value > tenthScore) {
+      await Get.defaultDialog(
+        title: 'Congratulations!',
+        content: Column(
+          children: [
+            const Text('You made it to the top 10!'),
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(
+                labelText: 'Enter your name',
+              ),
             ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () async {
+              if (nameController.text.isNotEmpty) {
+                final playerName = nameController.text;
+
+                // Kiểm tra xem tên đã tồn tại trong leaderboard hay chưa
+                final existingPlayer =
+                    await DatabaseHelper.getPlayerByName(playerName);
+
+                if (existingPlayer != null) {
+                  // Tên đã tồn tại, yêu cầu người dùng nhập tên khác
+                  Get.snackbar('Warning',
+                      'This name already exists. Please enter a different name.');
+                } else {
+                  // Tên không tồn tại, thêm người chơi mới
+                  final newPlayer = Player(
+                    id: DateTime.now().millisecondsSinceEpoch,
+                    name: playerName,
+                    score: gameController.scoreRx.value,
+                    lastUpdate: DateTime.now().millisecondsSinceEpoch,
+                  );
+                  DatabaseHelper.insertPlayer(newPlayer);
+                  Get.back();
+                }
+              }
+            },
+            child: const Text('Save'),
           ),
         ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () async {
-            if (nameController.text.isNotEmpty) {
-              final playerName = nameController.text;
-              
-              // Kiểm tra xem tên đã tồn tại trong leaderboard hay chưa
-              final existingPlayer = await DatabaseHelper.getPlayerByName(playerName);
-              
-              if (existingPlayer != null) {
-                // Tên đã tồn tại, yêu cầu người dùng nhập tên khác
-                Get.snackbar('Warning', 'This name already exists. Please enter a different name.');
-              } else {
-                // Tên không tồn tại, thêm người chơi mới
-                final newPlayer = Player(
-                  id: DateTime.now().millisecondsSinceEpoch,
-                  name: playerName,
-                  score: gameController.scoreRx.value,
-                  lastUpdate: DateTime.now().millisecondsSinceEpoch,
-                );
-                DatabaseHelper.insertPlayer(newPlayer);
-                Get.back();
-              }
-            }
-          },
-          child: const Text('Save'),
-        ),
-      ],
-    );
+      );
+    }
   }
-}
 }

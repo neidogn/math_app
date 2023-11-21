@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:math_app/app_router/app_router.dart';
 import 'package:math_app/screen/game/widgets/custom_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               width: 200,
               height: 60,
               onTap: () {
-                Get.toNamed('/game-page');
+                Get.toNamed(AppRoutes.gameRoute);
               },
               frontColor: Color.fromARGB(255, 218, 85, 104),
               shadowColor: Color.fromARGB(255, 181, 50, 64),
@@ -38,7 +39,7 @@ class HomeScreen extends StatelessWidget {
               width: 200,
               height: 60,
               onTap: () {
-                Get.toNamed('/leaderboard-page');
+                Get.toNamed(AppRoutes.leaderboardRoute);
               },
               frontColor: Color.fromARGB(255, 154, 68, 92),
               shadowColor: Color.fromARGB(255, 121, 33, 55),

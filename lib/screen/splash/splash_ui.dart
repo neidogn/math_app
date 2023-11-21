@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:math_app/app_router/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -7,14 +8,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2), () async {
+    Future.delayed(const Duration(seconds: 3), () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var status = prefs.getBool('isLoggedIn') ?? false;
       print(status);
       if (status) {
-        Get.offNamed('/home-page');
+        Get.offNamed(AppRoutes.homeRoute);
       } else {
-        Get.offNamed('/login-page');
+        Get.offNamed(AppRoutes.loginRoute);
       }
     });
     return Scaffold(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:math_app/app_router/app_router.dart';
 import 'package:math_app/screen/game/game_controller.dart';
 import 'package:math_app/screen/game/widgets/custom_button.dart';
 import 'package:math_app/screen/result/result_controller.dart';
@@ -63,8 +64,7 @@ class ResultScreen extends StatelessWidget {
                     frontColor: Color.fromARGB(255, 167, 62, 91),
                     shadowColor: Color.fromARGB(255, 121, 33, 55),
                     onTap: () => Get.until((route) {
-                      print('agggggggg${route.settings.name}');
-                      return route.settings.name == '/home-page';
+                      return route.settings.name == AppRoutes.homeRoute;
                     }),
                     child: const Center(
                       child: Icon(
